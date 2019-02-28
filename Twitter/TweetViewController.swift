@@ -8,14 +8,19 @@
 
 import UIKit
 
-class TweetViewController: UIViewController {
+class TweetViewController: UIViewController, UITextViewDelegate {
 
-    @IBOutlet weak var tweetText: UITextView!
+    @IBOutlet weak var characterCountLabel: UILabel!
+    @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tweetText.becomeFirstResponder()
+        
+        characterCountLabel.text = "140"
+        textView.delegate = self
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.black.cgColor
+        textView.becomeFirstResponder()
         // Do any additional setup after loading the view.
     }
     
@@ -24,8 +29,8 @@ class TweetViewController: UIViewController {
     }
     
     @IBAction func tweet(_ sender: Any) {
-        if !tweetText.text.isEmpty {
-            TwitterAPICaller.client?.postTweet(tweetString: tweetText.text, success: {
+        if !textView.text.isEmpty {
+            TwitterAPICaller.client?.postTweet(tweetString: textView.text, success: {
                 self.dismiss(animated: true, completion: nil)
             }, failure: { (error) in
                 print("Error posting tweet \(error)")
@@ -34,6 +39,24 @@ class TweetViewController: UIViewController {
         } else {
             self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        // TODO: Check the proposed new text character count
+        // Allow or disallow the new text
+        
+        // Set the max character limit
+        let characterLimit = 140
+        
+        // Construct what the new text would be if we allowed the user's latest edit
+        let newText = NSString(string: textView.text!).replacingCharacters(in: range, with: text)
+        
+        // TODO: Update Character Count Label
+        characterCountLabel.text = String(characterLimit - newText.characters.count)
+        
+        
+        // The new text should be allowed? True/False
+        return newText.characters.count < characterLimit
     }
 
     /*
