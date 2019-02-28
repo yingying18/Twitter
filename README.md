@@ -2,7 +2,7 @@
 
 **Twitter Part 2** is a basic twitter app to view, compose, favorite, and retweet tweets.
 
-Time spent: **3** hours spent in total
+Time spent: **4** hours spent in total
 
 ## User Stories
 
