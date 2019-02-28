@@ -116,6 +116,19 @@
                                                 <action selector="retweet:" destination="5dc-ts-zIn" eventType="touchUpInside" id="P3I-Kh-KXx"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCF-G6-mWS">
+                                            <rect key="frame" x="335.5" y="8" width="23.5" height="11.5"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Time">
+                                                    <attributes>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" size="10" name="Arial-BoldMT"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="xiT-zH-HZZ" firstAttribute="top" secondItem="WJ0-an-VEU" secondAttribute="bottom" constant="8" id="1oi-AL-pt5"/>
@@ -123,11 +136,13 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="U5o-ih-3w9" secondAttribute="bottom" constant="10" id="9bB-MA-MKH"/>
                                         <constraint firstItem="bQE-7H-gFy" firstAttribute="leading" secondItem="sXg-nY-2kp" secondAttribute="leadingMargin" id="Ao8-ik-VCk"/>
                                         <constraint firstItem="sDj-u6-JXt" firstAttribute="top" secondItem="xiT-zH-HZZ" secondAttribute="bottom" constant="10" id="BPc-rV-spQ"/>
+                                        <constraint firstItem="vCF-G6-mWS" firstAttribute="top" secondItem="sXg-nY-2kp" secondAttribute="top" constant="8" id="CGv-Rr-uIb"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="sDj-u6-JXt" secondAttribute="bottom" constant="10" id="LxA-nd-6K2"/>
                                         <constraint firstItem="bQE-7H-gFy" firstAttribute="top" secondItem="sXg-nY-2kp" secondAttribute="topMargin" id="MVE-kW-dsU"/>
                                         <constraint firstItem="WJ0-an-VEU" firstAttribute="leading" secondItem="bQE-7H-gFy" secondAttribute="trailing" constant="8" id="P6R-HS-tGo"/>
                                         <constraint firstItem="WJ0-an-VEU" firstAttribute="top" secondItem="sXg-nY-2kp" secondAttribute="topMargin" id="U5t-hu-7qo"/>
                                         <constraint firstItem="xiT-zH-HZZ" firstAttribute="leading" secondItem="bQE-7H-gFy" secondAttribute="trailing" constant="8" id="Vgq-VD-dsD"/>
+                                        <constraint firstAttribute="trailing" secondItem="vCF-G6-mWS" secondAttribute="trailing" constant="16" id="cMH-1q-dFg"/>
                                         <constraint firstItem="sDj-u6-JXt" firstAttribute="leading" secondItem="U5o-ih-3w9" secondAttribute="trailing" constant="10" id="fMu-XT-puM"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -135,6 +150,7 @@
                                     <outlet property="favButton" destination="sDj-u6-JXt" id="MEA-lR-OlV"/>
                                     <outlet property="profileImage" destination="bQE-7H-gFy" id="apq-OQ-HiF"/>
                                     <outlet property="retweetButton" destination="U5o-ih-3w9" id="LuW-6C-Ega"/>
+                                    <outlet property="timeTweeted" destination="vCF-G6-mWS" id="sh3-OU-Htk"/>
                                     <outlet property="tweetContent" destination="xiT-zH-HZZ" id="WX7-dK-N6I"/>
                                     <outlet property="usernameLabel" destination="WJ0-an-VEU" id="yqr-D4-lhP"/>
                                 </connections>
@@ -152,7 +168,7 @@
                                 <action selector="onLogout:" destination="kb9-Xg-TQk" id="yLL-Rc-ure"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Tweet" style="plain" id="fZ8-zP-gvd">
+                        <barButtonItem key="rightBarButtonItem" image="edit-icon" style="plain" id="fZ8-zP-gvd">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="Fb9-lm-qS1" kind="presentation" id="kFj-sO-kJS"/>
@@ -191,7 +207,7 @@
                         <viewLayoutGuide key="safeArea" id="hq0-Ef-exx"/>
                     </view>
                     <navigationItem key="navigationItem" id="1I9-Lc-HkJ">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="qE5-pM-W98">
+                        <barButtonItem key="leftBarButtonItem" image="close-icon" id="qE5-pM-W98">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="cancel:" destination="anQ-af-yJm" id="f6t-EG-ihq"/>
@@ -255,6 +271,8 @@
     </scenes>
     <resources>
         <image name="TwitterLogo" width="120" height="120"/>
+        <image name="close-icon" width="26" height="24"/>
+        <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
     </resources>
