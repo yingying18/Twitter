@@ -52,11 +52,11 @@ class TweetViewController: UIViewController, UITextViewDelegate {
         let newText = NSString(string: textView.text!).replacingCharacters(in: range, with: text)
         
         // TODO: Update Character Count Label
-        characterCountLabel.text = String(characterLimit - newText.characters.count)
+        characterCountLabel.text = String(characterLimit - newText.count)
         
         
         // The new text should be allowed? True/False
-        return newText.characters.count < characterLimit
+        return newText.count < characterLimit
     }
 
     /*
